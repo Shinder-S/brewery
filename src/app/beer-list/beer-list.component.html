@@ -1,1 +1,21 @@
-<p>beer-list works!</p>
+<h1>Beer List</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let beer of beers" [ngClass]="{'clearence': beer.clearence}">
+            <td><img [src]="beer.image" [alt]="beer.name"></td>
+            <td>{{beer.name}}</td>
+            <td>{{beer.type}}</td>
+            <td>{{beer.price}}</td>
+            <td><span class="badge text-bg-warning" *ngIf="beer.stock==0">OUT OF STOCK</span></td>
+        </tr>
+    </tbody>
+</table>
