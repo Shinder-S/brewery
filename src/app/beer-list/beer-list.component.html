@@ -17,11 +17,10 @@
             <td>{{beer.type}}</td>
             <td>{{beer.price | currency}}</td>
             <td>
-                <span class="badge text-bg-warning" *ngIf="beer.stock==0">OUT OF STOCK</span>
+                <div class="input-group" *ngIf="beer.stock==0">OUT OF STOCK</div>
             </td>
-            <td><button type="button" class="btn btn-outline-primary" (click)="downQuantity(beer)">-</button>
-                <input class="form-control" aria-label="Sizing example input" type="number" [(ngModel)]="beer.quantity" (focusout)="verifyBeerQuantity(beer)"/>
-                <button type="button" class="btn btn-outline-primary" (click)="upQuantity(beer)">+</button>
+            <td>
+                <app-input-integer [(quantity)]="beer.quantity" [max]="beer.stock" *ngIf="beer.stock"></app-input-integer>
             </td>
         </tr>
     </tbody>

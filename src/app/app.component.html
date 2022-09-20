@@ -6,14 +6,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacts</a>
+          <a class="nav-link" >Contacts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
+          <a class="nav-link" [routerLink]="['/about']">About Us</a>
         </li>
       </ul>
     </div>
@@ -21,6 +21,6 @@
 </nav>
 <h1>Title in app-components </h1>
 <div class="container">
-  <app-brewery-beers></app-brewery-beers>
+  <router-outlet></router-outlet>
 </div>
 <footer> {{title}} 2022</footer>
