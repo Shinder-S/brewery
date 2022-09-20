@@ -1,5 +1,5 @@
 <h1>Beer List</h1>
-<table class="table">
+<table class="table text-center">
     <thead>
         <tr>
             <th>Image</th>
@@ -7,6 +7,7 @@
             <th>Type</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Buy</th>
         </tr>
     </thead>
     <tbody>
@@ -14,8 +15,14 @@
             <td><img [src]="beer.image" [alt]="beer.name"></td>
             <td>{{beer.name}}</td>
             <td>{{beer.type}}</td>
-            <td>{{beer.price}}</td>
-            <td><span class="badge text-bg-warning" *ngIf="beer.stock==0">OUT OF STOCK</span></td>
+            <td>{{beer.price | currency}}</td>
+            <td>
+                <span class="badge text-bg-warning" *ngIf="beer.stock==0">OUT OF STOCK</span>
+            </td>
+            <td><button type="button" class="btn btn-outline-primary" (click)="downQuantity(beer)">-</button>
+                <input class="form-control" aria-label="Sizing example input" type="number" [(ngModel)]="beer.quantity" (focusout)="verifyBeerQuantity(beer)"/>
+                <button type="button" class="btn btn-outline-primary" (click)="upQuantity(beer)">+</button>
+            </td>
         </tr>
     </tbody>
 </table>

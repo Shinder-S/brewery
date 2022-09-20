@@ -14,33 +14,37 @@ export class BeerListComponent implements OnInit {
       price: 450,
       stock: 0,
       image: "assets/img/amstel.jpg",
-      clearence: false
+      clearence: false,
+      quantity: 0,
     },
     {
       name: "Fuller's",
       type: "Porter",
       price: 550,
-      stock: 1000,
+      stock: 2,
       image: "assets/img/fuller.jpg",
-      clearence: true
+      clearence: true,
+      quantity: 0,
     },
     {
       name: "Hobgoblin",
       type: "Indian Pale Ale",
       price: 650,
-      stock: 1200,
+      stock: 3,
       image: "assets/img/hobgoblin.jpg",
-      clearence: false
+      clearence: false,
+      quantity: 0,
     },
     {
-      name: "Kilkenny IRISH RED ALE ",
+      name: "Kilkenny",
       type: "Irish Red Ale",
       price: 550,
-      stock: 700,
+      stock: 5,
       image: "assets/img/kilkenny.jpg",
-      clearence: false
-    }
-  ];
+      clearence: false,
+      quantity: 0,
+    },
+  ]; 
 
 
   constructor() { }
@@ -48,4 +52,20 @@ export class BeerListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  downQuantity(beer: Beer): void{
+    if(beer.quantity > 0)
+      beer.quantity--;
+  }
+
+  upQuantity(beer: Beer): void{
+    if(beer.quantity < beer.stock)
+      beer.quantity++;
+  }
+
+  verifyBeerQuantity(beer: Beer): void{
+    if(beer.quantity > beer.stock)
+      alert("We ran out of stock. Sorry");
+    if (beer.quantity < 0)
+      alert("Cannot be ordered. We do not have stock to deliver");
+  }
 }
