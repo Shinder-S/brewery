@@ -19,6 +19,9 @@ export class InputIntegerComponent implements OnInit {
   @Output()
   quantityChange: EventEmitter<number> = new EventEmitter<number>();
 
+  @Output()
+  maxReached: EventEmitter<string> = new EventEmitter<string>();
+
   ngOnInit(): void {
   }
 
@@ -29,13 +32,16 @@ export class InputIntegerComponent implements OnInit {
   }
 
   upQuantity(): void{
-    if(this.quantity < this.max)
+    if(this.quantity < this.max){
       this.quantity++;
       this.quantityChange.emit(this.quantity);
+    }
+    else {
+      this.maxReached.emit("Max is reached");
+    }
   }
 
   verifyBeerQuantity(event: { key: any; }): void{
-    console.log(event.key);
     this.quantityChange.emit(this.quantity);
   }
 }
