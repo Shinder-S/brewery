@@ -2,7 +2,7 @@
     <div class="input-group-prepend">
         <button type="button" class="btn btn-outline-primary" (click)="downQuantity()">-</button>
     </div>
-    <input class="form-control" aria-label="Sizing example input"[(ngModel)]="quantity" (keyup)="verifyBeerQuantity($event)"/>
+    <input class="form-control" aria-label="Sizing example input"[(ngModel)]="quantity" (keyup)="verifyBeerQuantity($event)" disabled/>
     <div>
         <button type="button" class="btn btn-outline-primary" (click)="upQuantity()">+</button>
     </div>
