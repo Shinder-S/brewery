@@ -3,4 +3,5 @@
     <li *ngFor="let b of cartList$ | async">
         {{b.name}}: {{b.quantity}}
     </li>
+    <button class="btn btn-outline-primary" (click)="emptyCart()">DELETE</button> 
 </ul>

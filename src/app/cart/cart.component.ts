@@ -11,11 +11,14 @@ import { Beer } from '../beer-list/Beer';
 export class CartComponent implements OnInit {
   
   cartList$: Observable<Beer[]>;
-  constructor(cart: BeerCartService) {
+  constructor(private cart: BeerCartService) {
     this.cartList$ = cart.cartList.asObservable();
   }
-
+  
   ngOnInit(): void {
   }
-
+  
+  emptyCart(): void {
+     this.cart.emptyCart();
+  }
 }
